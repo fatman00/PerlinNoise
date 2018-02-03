@@ -1,10 +1,10 @@
 var cols, rows;
-var scl = 20;
+var scl = 15;
 var w = 500;
 var h = 500;
 var noisescl= 0.15;
 var noiseval = 0;
-var noiseinc = 0;
+var noiseinc = 0.02;
 
 var flying = 0;
 
@@ -23,9 +23,8 @@ function draw() {
   for(var i = 0; i < cols; i++) {
     for(var j = 0;j<rows;j++) {
       // Gennerate Perlin Noise from the X,Y coordinates, scale it and map it to BW color scale
-      var dir = map(noise(i*noisescl,j*noisescl),0,1,0,TWO_PI);
+      var dir = map(noise(i*noisescl,j*noisescl,noiseval),0,1,0,TWO_PI);
       var dirvec = p5.Vector.fromAngle(dir);
-      //line(i*scl, j*scl,i*scl+cos(dir)*scl,j*scl+sin(dir)*scl);
       stroke(0);
       push();
       translate(i*scl,j*scl);
@@ -35,6 +34,7 @@ function draw() {
       pop();
     }
   }
-  noLoop();
-  fr.html(floot(frameRate()));
+  //noLoop();
+  noiseval+=noiseinc;
+  //fr.html(floot(frameRate()));
 }
