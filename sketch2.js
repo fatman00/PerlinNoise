@@ -2,9 +2,10 @@ var cols, rows;
 var scl = 20;
 var w = 500;
 var h = 500;
-var noisescl= 0.15;
+var noisescl= 0.2;
 var noiseval = 0;
-var noiseinc = 0.015;
+var noiseinc = 0.02;
+var numparticles = 300;
 
 var flying = 0;
 
@@ -17,7 +18,7 @@ function setup() {
   createCanvas(w, h);
   cols = w/ scl;
   rows = h/ scl;
-  for(var i = 0; i < 100;i++){
+  for(var i = 0; i < numparticles;i++){
     particles[i] = new Particle();
   }
   flowfield = new Array(cols*rows);
@@ -49,6 +50,6 @@ function draw() {
     particles[i].edges();
   }
   //noLoop();
-  // noiseval+=noiseinc;
+  noiseval+=noiseinc;
   //fr.html(floot(frameRate()));
 }
