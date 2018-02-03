@@ -18,18 +18,18 @@ function setup() {
 }
 
 function draw() {
-  var xoff=0;
-loadPixels();
-  for(var i = 0; i < width; i++) {
-    for(var j = 0;j<height;j++) {
+  var xoff=0.01;
+  loadPixels();
+  for(var j = 0;j<height;j++) {
+    for(var i = 0; i < width; i++) {
       var index = (i+j*width)*4;
       // var r = random(255);
-      var r = noise(xoff)*255;
+      var r = noise(i*xoff,j*xoff)*255;
       pixels[index+0] = r;
       pixels[index+1] = r;
       pixels[index+2] = r;
       pixels[index+3] = 255;
-      xoff+=0.01;
+      //xoff+=0.01;
     }
   }
   updatePixels();
