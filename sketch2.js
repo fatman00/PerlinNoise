@@ -4,18 +4,22 @@ var w = 500;
 var h = 500;
 var noisescl= 0.15;
 var noiseval = 0;
-var noiseinc = 0.02;
+var noiseinc = 0.015;
 
 var flying = 0;
 
 var terrain = [];
 
+var particles = [];
+
 function setup() {
   createCanvas(w, h);
   cols = w/ scl;
   rows = h/ scl;
+  for(var i = 0; i < 100;i++){
+    particles[i] = new Particle();
+  }
 }
-
 function draw() {
   background(100);
   // noiseSeed(noiseval);
@@ -33,6 +37,11 @@ function draw() {
 
       pop();
     }
+  }
+  for(var i = 0; i < particles.length;i++){
+
+    particles[i].update();
+    particles[i].show();
   }
   //noLoop();
   noiseval+=noiseinc;
