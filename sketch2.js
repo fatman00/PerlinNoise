@@ -28,31 +28,31 @@ function setup() {
 //   }
 //   endShape();
 // }
-function draw() {
-  if(mouseIsPressed) {
-    fill(0);
-  } else {
-    fill(255);
-  }
-  ellipse(mouseX, mouseY, 80,80);
-
-}
-
 // function draw() {
-//   // for(var i = 0; i < terrain.length;i++) {
-//   //
-//   // }
-//   background(100);
-//   stroke(0);
-//   // fill(255);
-//   for(var i = 0; i < cols; i++) {
-//     for(var j = 0;j<rows;j++) {
-//       // Gennerate Perlin Noise from the X,Y coordinates, scale it and map it to BW color scale
-//       fill(map(noise(i,j)*0.3,0,1,0,255));
-//       rect(i*scl,j*scl,scl-1,scl-1);
-//     }
+//   if(mouseIsPressed) {
+//     fill(0);
+//   } else {
+//     fill(255);
 //   }
-//   // rect(50,50,80,80);
+//   ellipse(mouseX, mouseY, 80,80);
 //
-//   noLoop();
 // }
+
+function draw() {
+  // for(var i = 0; i < terrain.length;i++) {
+  //
+  // }
+  background(100);
+  stroke(0);
+  // fill(255);
+  for(var i = 0; i < cols; i++) {
+    for(var j = 0;j<rows;j++) {
+      // Gennerate Perlin Noise from the X,Y coordinates, scale it and map it to BW color scale
+      fill(map(noise(i,j)*0.3,0,1,0,255));
+      rect(i*scl,j*scl,scl-1,scl-1);
+    }
+  }
+  // rect(50,50,80,80);
+
+  noLoop();
+}
