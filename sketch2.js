@@ -15,28 +15,28 @@ function setup() {
 
 
 
-// function draw() {
-//   background(50);
-//   stroke(255);
-//   noFill();
-//   beginShape();
-//   var xoff=0;
-//   for (var x = 0; x < width;x++){
-//     var y = noise(xoff) * height;
-//     vertex(x,y);
-//     xoff+=0.02
-//   }
-//   endShape();
-// }
 function draw() {
-  if(mouseIsPressed) {
-    fill(0);
-  } else {
-    fill(255);
+  background(50);
+  stroke(255);
+  noFill();
+  beginShape();
+  var xoff=0;
+  for (var x = 0; x < width;x++){
+    var y = noise(xoff) * height;
+    vertex(x,y);
+    xoff+=0.02
   }
-  ellipse(mouseX, mouseY, 80,80);
-
+  endShape();
 }
+// function draw() {
+//   if(mouseIsPressed) {
+//     fill(0);
+//   } else {
+//     fill(255);
+//   }
+//   ellipse(mouseX, mouseY, 80,80);
+//
+// }
 
 // function draw() {
 //   // for(var i = 0; i < terrain.length;i++) {
