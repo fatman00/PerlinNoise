@@ -2,6 +2,7 @@ var cols, rows;
 var scl = 10;
 var w = 500;
 var h = 500;
+var noisescl= 0.15;
 
 var flying = 0;
 
@@ -45,11 +46,10 @@ function draw() {
   background(100);
   stroke(0);
   // fill(255);
-  var xoff= 0.2;
   for(var i = 0; i < cols; i++) {
     for(var j = 0;j<rows;j++) {
       // Gennerate Perlin Noise from the X,Y coordinates, scale it and map it to BW color scale
-      fill(map(noise(i*xoff,j*xoff),0,1,0,255));
+      fill(map(noise(i*noisescl,j*noisescl),0,1,0,255));
       rect(i*scl,j*scl,scl-1,scl-1);
     }
   }
