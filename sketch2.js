@@ -1,5 +1,5 @@
 var cols, rows;
-var scl = 15;
+var scl = 20;
 var w = 500;
 var h = 500;
 var noisescl= 0.15;
@@ -9,6 +9,7 @@ var noiseinc = 0.015;
 var flying = 0;
 
 var terrain = [];
+var flowfield = [];
 
 var particles = [];
 
@@ -19,9 +20,10 @@ function setup() {
   for(var i = 0; i < 100;i++){
     particles[i] = new Particle();
   }
+  flowfield = new Array(cols*rows);
 }
 function draw() {
-  background(100);
+  background(255);
   // noiseSeed(noiseval);
   stroke(0);
   for(var i = 0; i < cols; i++) {
@@ -29,7 +31,9 @@ function draw() {
       // Gennerate Perlin Noise from the X,Y coordinates, scale it and map it to BW color scale
       var dir = map(noise(i*noisescl,j*noisescl,noiseval),0,1,0,TWO_PI);
       var dirvec = p5.Vector.fromAngle(dir);
-      stroke(0);
+      var index = j*cols+i;
+      flowfield[index] = dirvec;
+      stroke(0, 50);
       push();
       translate(i*scl,j*scl);
       rotate(dirvec.heading());
@@ -39,11 +43,12 @@ function draw() {
     }
   }
   for(var i = 0; i < particles.length;i++){
-
+    particles[i].follow(flowfield);
     particles[i].update();
     particles[i].show();
+    particles[i].edges();
   }
   //noLoop();
-  noiseval+=noiseinc;
+  // noiseval+=noiseinc;
   //fr.html(floot(frameRate()));
 }
